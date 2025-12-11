@@ -1,0 +1,179 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&display=swap');
+
+@layer base {
+  :root {
+    --background: 0 0% 4%;
+    --foreground: 0 0% 95%;
+
+    --card: 0 0% 8%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 0 0% 8%;
+    --popover-foreground: 0 0% 95%;
+
+    --primary: 0 85% 50%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 180 100% 50%;
+    --secondary-foreground: 0 0% 4%;
+
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 55%;
+
+    --accent: 0 85% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 85% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 20%;
+    --input: 0 0% 15%;
+    --ring: 0 85% 50%;
+
+    --radius: 0.25rem;
+
+    --font-mono: 'Share Tech Mono', monospace;
+    --font-display: 'Orbitron', sans-serif;
+
+    --glow-primary: 0 0 20px hsl(0 85% 50% / 0.5);
+    --glow-secondary: 0 0 20px hsl(180 100% 50% / 0.5);
+    --scanline-opacity: 0.03;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-mono;
+    font-family: var(--font-mono);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-display);
+  }
+
+  .font-mono {
+    font-family: var(--font-mono);
+  }
+
+  .text-glow {
+    text-shadow: var(--glow-primary);
+  }
+
+  .text-glow-secondary {
+    text-shadow: var(--glow-secondary);
+  }
+
+  .box-glow {
+    box-shadow: var(--glow-primary);
+  }
+
+  .box-glow-secondary {
+    box-shadow: var(--glow-secondary);
+  }
+}
+
+/* Scanline overlay effect */
+.scanlines::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    hsl(0 0% 0% / var(--scanline-opacity)) 2px,
+    hsl(0 0% 0% / var(--scanline-opacity)) 4px
+  );
+  z-index: 100;
+}
+
+/* Glitch animation */
+@keyframes glitch {
+  0% {
+    transform: translate(0);
+    text-shadow: var(--glow-primary);
+  }
+  20% {
+    transform: translate(-2px, 2px);
+    text-shadow: -2px 0 hsl(180 100% 50%), 2px 0 hsl(0 85% 50%);
+  }
+  40% {
+    transform: translate(-2px, -2px);
+    text-shadow: 2px 0 hsl(180 100% 50%), -2px 0 hsl(0 85% 50%);
+  }
+  60% {
+    transform: translate(2px, 2px);
+    text-shadow: -2px 0 hsl(0 85% 50%), 2px 0 hsl(180 100% 50%);
+  }
+  80% {
+    transform: translate(2px, -2px);
+    text-shadow: 2px 0 hsl(0 85% 50%), -2px 0 hsl(180 100% 50%);
+  }
+  100% {
+    transform: translate(0);
+    text-shadow: var(--glow-primary);
+  }
+}
+
+@keyframes flicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+    opacity: 1;
+  }
+  20%, 24%, 55% {
+    opacity: 0.8;
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 5px hsl(0 85% 50% / 0.5), 0 0 10px hsl(0 85% 50% / 0.3);
+  }
+  50% {
+    box-shadow: 0 0 10px hsl(0 85% 50% / 0.8), 0 0 20px hsl(0 85% 50% / 0.5), 0 0 30px hsl(0 85% 50% / 0.3);
+  }
+}
+
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-glitch {
+  animation: glitch 3s infinite;
+}
+
+.animate-flicker {
+  animation: flicker 4s infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-slide-in {
+  animation: slide-in 0.3s ease-out forwards;
+}
