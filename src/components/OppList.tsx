@@ -10,7 +10,7 @@ const initialOpps: Opp[] = [
     name: 'Grigor Babić',
     alias: 'Merkat',
     threatLevel: 'high',
-    status: 'low',
+    status: 'active',
     notes: 'Known associate of multiple underground organizations. Approach with caution.',
     dateAdded: new Date('2024-01-15'),
   },
@@ -36,7 +36,7 @@ const initialOpps: Opp[] = [
     id: '4',
     name: 'Marko Ne znam',
     alias: 'Pizda',
-    threatLevel: 'medium',
+    threatLevel: 'low',
     status: 'active',
     dateAdded: new Date('2024-03-10'),
     notes : "Last seen in BG"
