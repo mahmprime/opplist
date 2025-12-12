@@ -6,6 +6,15 @@ import { Skull, Target } from "lucide-react";
 
 const initialOpps: Opp[] = [
   {
+    id: '4',
+    name: 'Ashad Chammuga',
+    alias: 'Niggercina prljava',
+    threatLevel: 'critical',
+    status: 'active',
+    dateAdded: new Date('2025-12-12'),
+    notes : "MA KOME ON DA OBJASNJAVA NACRTNU PIZDA MU MATERINA CRNA DA BOG DA AUTOBUS UDARIO",
+  },
+  {
     id: '1',
     name: 'Grigor Babić',
     alias: 'Merkat',
